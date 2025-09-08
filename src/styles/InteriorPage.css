@@ -1,0 +1,247 @@
+/* Interior Page Base Styles */
+.interior-page {
+  min-height: 100vh;
+}
+
+/* Interior Hero Section */
+.interior-hero {
+  background: linear-gradient(135deg, #4169E1, #6495ED);
+  color: white;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.interior-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-graphics {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-graphics .floating-icon {
+  position: absolute;
+  font-size: 3.5rem;
+  opacity: 0.12;
+  animation: float 8s ease-in-out infinite;
+  color: white;
+}
+
+.hero-graphics .floating-icon:nth-child(1) {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.hero-graphics .floating-icon:nth-child(2) {
+  top: 25%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.hero-graphics .floating-icon:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.hero-graphics .floating-icon:nth-child(4) {
+  bottom: 20%;
+  right: 25%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-25px) rotate(3deg); 
+  }
+}
+
+.interior-hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.interior-hero > .interior-hero-container > p {
+  font-size: 1.4rem;
+  opacity: 0.9;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  color: #FFB6C1;
+}
+
+.hero-description {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.hero-cta-btn {
+  background: white;
+  color: #4169E1;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-cta-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .interior-hero {
+    padding: 6rem 0 3rem;
+  }
+  
+  .interior-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .interior-hero > .interior-hero-container > p {
+    font-size: 1.2rem;
+  }
+  
+  .hero-description {
+    padding: 1.5rem;
+    margin: 0 1rem 2rem;
+  }
+  
+  .hero-description p {
+    font-size: 1rem;
+  }
+  
+  .hero-graphics .floating-icon {
+    font-size: 2.5rem;
+  }
+  
+  .hero-cta-btn {
+    font-size: 1rem;
+    padding: 0.875rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interior-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .interior-hero > .interior-hero-container > p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-description {
+    padding: 1rem;
+  }
+  
+  .hero-graphics .floating-icon {
+    font-size: 2rem;
+    opacity: 0.08;
+  }
+}
+
+/* Hero Button Animation */
+.hero-cta-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(65, 105, 225, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-cta-btn:hover::before {
+  left: 100%;
+}
+
+/* Print Styles */
+@media print {
+  .interior-hero {
+    background: #4169E1 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .hero-graphics {
+    display: none;
+  }
+  
+  .hero-cta-btn {
+    display: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-graphics .floating-icon {
+    animation: none;
+  }
+  
+  .hero-cta-btn::before {
+    display: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .interior-hero {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  
+  .hero-description {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+  }
+  
+  .hero-cta-btn {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+  }
+}

@@ -1,0 +1,148 @@
+/* Careers Hero Section */
+.careers-hero {
+  background: linear-gradient(135deg, #4169E1, #6495ED);
+  color: white;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.careers-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-graphics {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-graphics .floating-icon {
+  position: absolute;
+  font-size: 3.5rem;
+  opacity: 0.12;
+  animation: float 8s ease-in-out infinite;
+  color: white;
+}
+
+.hero-graphics .floating-icon:nth-child(1) {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.hero-graphics .floating-icon:nth-child(2) {
+  top: 25%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.hero-graphics .floating-icon:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.hero-graphics .floating-icon:nth-child(4) {
+  bottom: 20%;
+  right: 25%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-25px) rotate(3deg); 
+  }
+}
+
+.careers-hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.careers-hero > .careers-hero-container > p {
+  font-size: 1.4rem;
+  opacity: 0.9;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  color: #FFB6C1;
+}
+
+.hero-description {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .careers-hero {
+    padding: 6rem 0 3rem;
+  }
+  
+  .careers-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .careers-hero > .careers-hero-container > p {
+    font-size: 1.2rem;
+  }
+  
+  .hero-description {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .hero-description p {
+    font-size: 1rem;
+  }
+  
+  .hero-graphics .floating-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .careers-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .careers-hero > .careers-hero-container > p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-description {
+    padding: 1rem;
+  }
+  
+  .hero-graphics .floating-icon {
+    font-size: 2rem;
+    opacity: 0.08;
+  }
+}

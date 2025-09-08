@@ -1,17 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/images/logo.jpg';
 import '../styles/Header.css';
-import logo from '../assets/images/logo.jpg';  // Keep this import
 
 const Header = () => {
   const location = useLocation();
   const [activeNav, setActiveNav] = useState(getActiveNav(location.pathname));
   const [showWorksDropdown, setShowWorksDropdown] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   function getActiveNav(pathname) {
-    switch(pathname) {
+    switch (pathname) {
       case '/': return 'HOME';
       case '/about': return 'ABOUT';
       case '/services': return 'SERVICES';
@@ -56,104 +56,139 @@ const Header = () => {
         setShowWorksDropdown(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleWorksClick = () => {
+  const handleWorksClick = (e) => {
+    e.stopPropagation();
     setShowWorksDropdown(!showWorksDropdown);
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setShowWorksDropdown(false);
+  };
+
   return (
-    <motion.header 
-      className="header"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
+    <header className="header">
       <div className="header-container">
-        {/* Fixed: Use imported logo variable */}
-        <motion.div 
-          className="header-logo"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
+        <div className="header-logo">
           <Link to="/">
-            <img 
-              src={logo}
-              alt="EKS Construction Logo" 
-              className="logo-image"
-            />
+            <img src={logo} alt="EKS Construction" />
           </Link>
-        </motion.div>
-        
-        <nav className="navbar">
-          {navItems.map((item) => (
-            <div key={item.name} className="nav-item-container" ref={item.dropdown ? dropdownRef : null}>
-              {item.dropdown ? (
-                <>
-                  <motion.button
-                    className={`nav-item dropdown-trigger ${activeNav === item.name ? 'active' : ''}`}
-                    onClick={handleWorksClick}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.name} <span className="dropdown-arrow">▼</span>
-                  </motion.button>
-                  
-                  <AnimatePresence>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="nav-desktop">
+          <ul className="nav-list">
+            {navItems.map((item) => (
+              <li key={item.name} className={`nav-item ${activeNav === item.name ? 'active' : ''}`}>
+                {item.dropdown ? (
+                  <div className="dropdown" ref={dropdownRef}>
+                    <span 
+                      className="nav-link dropdown-toggle" 
+                      onClick={handleWorksClick}
+                    >
+                      {item.name} ▼
+                    </span>
                     {showWorksDropdown && (
-                      <motion.div
-                        className="dropdown-menu"
-                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {worksDropdownItems.map((dropdownItem, index) => (
-                          <motion.div
-                            key={dropdownItem.name}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                          >
-                            <Link
-                              to={dropdownItem.path}
-                              className="dropdown-item"
+                      <ul className="dropdown-menu">
+                        {worksDropdownItems.map((dropItem) => (
+                          <li key={dropItem.path}>
+                            <Link 
+                              to={dropItem.path} 
+                              className="dropdown-link"
                               onClick={() => {
-                                setShowWorksDropdown(false);
                                 setActiveNav('OUR WORKS');
+                                setShowWorksDropdown(false);
                               }}
                             >
-                              <span className="dropdown-icon">{dropdownItem.icon}</span>
-                              {dropdownItem.name}
+                              <span className="dropdown-icon">{dropItem.icon}</span>
+                              {dropItem.name}
                             </Link>
-                          </motion.div>
+                          </li>
                         ))}
-                      </motion.div>
+                      </ul>
                     )}
-                  </AnimatePresence>
-                </>
-              ) : (
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    to={item.path}
-                    className={`nav-item ${activeNav === item.name ? 'active' : ''}`}
+                  </div>
+                ) : (
+                  <Link 
+                    to={item.path} 
+                    className="nav-link"
                     onClick={() => setActiveNav(item.name)}
                   >
                     {item.name}
                   </Link>
-                </motion.div>
-              )}
-            </div>
-          ))}
+                )}
+              </li>
+            ))}
+          </ul>
         </nav>
+
+        {/* Mobile Hamburger */}
+        <button 
+          className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* Mobile Navigation */}
+        <nav className={`nav-mobile ${mobileMenuOpen ? 'open' : ''}`}>
+          <ul className="mobile-nav-list">
+            {navItems.map((item) => (
+              <li key={item.name} className="mobile-nav-item">
+                {item.dropdown ? (
+                  <div className="mobile-dropdown">
+                    <span 
+                      className="mobile-nav-link dropdown-toggle" 
+                      onClick={handleWorksClick}
+                    >
+                      {item.name} ▼
+                    </span>
+                    {showWorksDropdown && (
+                      <ul className="mobile-dropdown-menu">
+                        {worksDropdownItems.map((dropItem) => (
+                          <li key={dropItem.path}>
+                            <Link 
+                              to={dropItem.path} 
+                              className="mobile-dropdown-link"
+                              onClick={closeMobileMenu}
+                            >
+                              <span className="dropdown-icon">{dropItem.icon}</span>
+                              {dropItem.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ) : (
+                  <Link 
+                    to={item.path} 
+                    className="mobile-nav-link"
+                    onClick={closeMobileMenu}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Mobile Overlay */}
+        {mobileMenuOpen && <div className="mobile-overlay" onClick={closeMobileMenu}></div>}
       </div>
-    </motion.header>
+    </header>
   );
 };
 

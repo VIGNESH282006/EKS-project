@@ -16,6 +16,8 @@ import UpcomingProjectsPage from './pages/UpcomingProjectsPage';
 import ScrollToTop from './components/ScrollToTop';
 import AutoScrollToTop from './components/AutoScrollToTop';
 import './styles/globals.css';
+import WhyChooseUsPage from '.\pages\WhyChooseUsPage.js';
+
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
           <Route path="/ongoing-projects" element={<OngoingProjectsPage />} />
           <Route path="/upcoming-projects" element={<UpcomingProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
         </Routes>
         <Footer />
       </div>

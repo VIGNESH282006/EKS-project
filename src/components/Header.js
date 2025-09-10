@@ -22,6 +22,7 @@ const Header = () => {
       case '/contact': return 'CONTACT';
       case '/completed-projects':
       case '/ongoing-projects':
+      case '/why-choose-us': return 'WHY CHOOSE US';
       case '/upcoming-projects':
         return 'OUR WORKS';
       default: return 'HOME';
@@ -36,6 +37,7 @@ const Header = () => {
     { name: 'PACKAGES', path: '/packages' },
     { name: 'OUR WORKS', dropdown: true },
     { name: 'OUR TEAM', path: '/our-team' },
+    { name: 'WHY CHOOSE US', path: '/why-choose-us' },
     { name: 'CAREERS', path: '/careers' },
     { name: 'CONTACT', path: '/contact' }
   ];

@@ -7,12 +7,13 @@
   z-index: 1000;
   background: transparent; /* Changed from white to transparent */
   /* Removed box-shadow for clean overlay effect */
-  backdrop-filter: blur(2px); /* Optional: adds slight blur to content behind header */
+  backdrop-filter: blur(5px); /* Optional: adds slight blur to content behind header */
 }
 
 .header-container {
   max-width: 1200px;
   margin: left ;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between; /* This pushes logo left and nav right */
@@ -272,6 +273,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.599) 0%, rgba(0,0,0,0.1) 100%);
   z-index: -1;
 }

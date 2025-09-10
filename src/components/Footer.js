@@ -14,13 +14,6 @@ const Footer = () => {
           <p className="footer-description">
             Building your dreams with quality and excellence since 2010.
           </p>
-          
-          <div className="social-icons">
-            <div className="social-icon twitter">🐦</div>
-            <div className="social-icon instagram">📷</div>
-            <div className="social-icon youtube">📺</div>
-            <div className="social-icon linkedin">💼</div>
-          </div>
         </div>
         
         <div className="footer-section quick-links">
@@ -48,19 +41,15 @@ const Footer = () => {
         <div className="footer-section contact-info">
           <h4>Contact Us</h4>
           <div className="contact-detail">
-            <span className="contact-icon">📧</span>
             <span>info@eksconstruction.com</span>
           </div>
           <div className="contact-detail">
-            <span className="contact-icon">📱</span>
             <span>+91 98765 43210</span>
           </div>
           <div className="contact-detail">
-            <span className="contact-icon">📞</span>
             <span>+91 80123 45678</span>
           </div>
           <div className="contact-detail">
-            <span className="contact-icon">📍</span>
             <span>
               123 Construction Avenue<br />
               Your City, State 123456<br />

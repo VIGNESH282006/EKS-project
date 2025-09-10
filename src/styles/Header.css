@@ -12,7 +12,7 @@
 
 .header-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: left ;
   display: flex;
   align-items: center;
   justify-content: space-between; /* This pushes logo left and nav right */
@@ -25,14 +25,16 @@
 }
 
 .header-logo img {
-  height: 50px;
-  width: auto;
+  border-radius: 10px;
+  margin-right: 325px;
+  height: 100px;
+  width: 300px;
 }
 
 /* Desktop Navigation - Aligned to far right */
 .nav-desktop {
   /* Removed flex: 1 and margin-left to allow right alignment */
-  margin-left: auto; /* Pushes nav to the right */
+  margin-left: auto ; /* Pushes nav to the right */
 }
 
 .nav-list {
@@ -61,7 +63,7 @@
 
 .nav-link:hover,
 .nav-item.active .nav-link {
-  color: #28a745; /* Green color as per your preference */
+  color: #4961e1; /* Green color as per your preference */
 }
 
 /* Desktop Dropdown */
@@ -109,7 +111,7 @@
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   width: 30px;
   height: 30px;
   background: none;

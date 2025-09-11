@@ -15,10 +15,6 @@ const HeroSection = () => {
       <div className="hero-content">
         <h1 className="hero-title">EKS Construction</h1>
         <p className="hero-subtitle">Feel the happiness in your Home</p>
-        <p className="hero-description">
-          We are expert home construction contractors dedicated to building your dream home with
-          quality, precision, and care. Your happiness is our success.
-        </p>
         
         <div className="hero-buttons">
           <button className="btn-primary">OUR SERVICES</button>

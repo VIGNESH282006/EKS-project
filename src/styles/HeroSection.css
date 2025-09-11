@@ -41,7 +41,7 @@
 /* Hero Content */
 .hero-content {
   text-align: center;
-  color: #fafafc;
+  color: white;
   max-width: 800px;
   padding: 0 2rem;
   z-index: 1;
@@ -52,7 +52,6 @@
   font-size: 4rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: linear-gradient(90deg, #4169E1, #FF4444, #4169E1);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   line-height: 1.2;
   animation: fadeInUp 1s ease-out;

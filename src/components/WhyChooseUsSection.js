@@ -39,19 +39,9 @@ const WhyChooseUsSection = () => {
       title: 'Client-Centric Approach',
       description: 'Your vision is our priority. We work closely with clients, offering transparent communication and personalized solutions to bring their ideas to life.',
       color: 'red'
-    },
-    {
-      icon: '🌱',
-      title: 'Sustainability & Innovation',
-      description: 'We integrate eco-friendly practices and innovative technologies to create sustainable, future-ready structures.',
-      color: 'blue'
-    },
-    {
-      icon: '📈',
-      title: 'Strong Track Record',
-      description: 'From residential to commercial, we have a proven history of successful project execution and satisfied clients.',
-      color: 'red'
     }
+    // REMOVED: 'Sustainability & Innovation' card (🌱)
+    // REMOVED: 'Strong Track Record' card (📈)
   ];
 
   const containerVariants = {

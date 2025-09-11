@@ -16,7 +16,7 @@ import UpcomingProjectsPage from './pages/UpcomingProjectsPage';
 import ScrollToTop from './components/ScrollToTop';
 import AutoScrollToTop from './components/AutoScrollToTop';
 import './styles/globals.css';
-import WhyChooseUsPage from '.\pages\WhyChooseUsPage.js';
+import WhyChooseUsPage from './pages/WhyChooseUsPage';
 
 
 function App() {

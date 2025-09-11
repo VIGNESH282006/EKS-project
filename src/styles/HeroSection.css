@@ -49,12 +49,35 @@
 }
 
 .hero-title {
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   line-height: 1.2;
+  -webkit-background-clip: text;
+  background-clip: text;
   animation: fadeInUp 1s ease-out;
+.hero {
+  background: none;
+  color: #FF4444;
+}
+
+}
+.hero {
+  background: none;
+  color: #FF4444;
+}
+.hero-heading{
+  color:white;
+  font-weight: 600;
+  font-size: 5rem;
+  font-style: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+}
+.hero-k{
+  color:red
 }
 
 .hero-subtitle {

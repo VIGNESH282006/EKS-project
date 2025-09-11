@@ -13,7 +13,14 @@ const HeroSection = () => {
       </div>
       
       <div className="hero-content">
-        <h1 className="hero-title">EKS Construction</h1>
+      <h1 className='hero-heading'>
+        e
+        <span className='hero-k'>k</span>   
+        s            
+        Construction        
+      </h1>
+      
+
         <p className="hero-subtitle">Feel the happiness in your Home</p>
         
         <div className="hero-buttons">

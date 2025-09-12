@@ -19,7 +19,7 @@ const AboutPage = () => {
         transition={{ delay: 0.2, duration: 0.8 }}
       >
         <div className="page-hero-container">
-          <h1>About EKS Construction</h1>
+          <h1>About Our Company</h1>
           <p>Feel the happiness in your Home</p>
         </div>
       </motion.section>

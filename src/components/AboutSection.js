@@ -38,7 +38,7 @@ const AboutSection = () => {
 
           <div className="about-visual">
             <img
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=400&fit=crop"
+              src="https://eksconstruction.in/wp-content/uploads/2024/12/about-eks-construction.jpg"
               alt="About EKS Construction"
               className="about-image"
             />

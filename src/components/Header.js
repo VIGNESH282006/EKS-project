@@ -22,13 +22,13 @@ const Header = () => {
       case '/contact': return 'CONTACT';
       case '/completed-projects':
       case '/ongoing-projects':
-      case '/why-choose-us': return 'WHY CHOOSE US';
       case '/upcoming-projects':
         return 'OUR WORKS';
       default: return 'HOME';
     }
   }
 
+  // REMOVED "WHY CHOOSE US" from navigation
   const navItems = [
     { name: 'HOME', path: '/' },
     { name: 'ABOUT', path: '/about' },
@@ -37,7 +37,6 @@ const Header = () => {
     { name: 'PACKAGES', path: '/packages' },
     { name: 'OUR WORKS', dropdown: true },
     { name: 'OUR TEAM', path: '/our-team' },
-    { name: 'WHY CHOOSE US', path: '/why-choose-us' },
     { name: 'CAREERS', path: '/careers' },
     { name: 'CONTACT', path: '/contact' }
   ];
@@ -58,6 +57,7 @@ const Header = () => {
         setShowWorksDropdown(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -79,9 +79,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-container">
+        {/* Logo */}
         <div className="header-logo">
           <Link to="/">
-            <img src={logo} alt="EKS Construction" />
+            <img src={logo} alt="EKS Construction Logo" />
           </Link>
         </div>
 
@@ -89,41 +90,27 @@ const Header = () => {
         <nav className="nav-desktop">
           <ul className="nav-list">
             {navItems.map((item) => (
-              <li key={item.name} className={`nav-item ${activeNav === item.name ? 'active' : ''}`}>
+              <li key={item.name} className={`nav-item ${activeNav === item.name ? 'active' : ''}`} ref={item.dropdown ? dropdownRef : null}>
                 {item.dropdown ? (
-                  <div className="dropdown" ref={dropdownRef}>
-                    <span 
-                      className="nav-link dropdown-toggle" 
-                      onClick={handleWorksClick}
-                    >
-                      {item.name} ▼
-                    </span>
+                  <>
+                    <button className="nav-link dropdown-toggle" onClick={handleWorksClick}>
+                      {item.name} <span>▼</span>
+                    </button>
                     {showWorksDropdown && (
                       <ul className="dropdown-menu">
-                        {worksDropdownItems.map((dropItem) => (
-                          <li key={dropItem.path}>
-                            <Link 
-                              to={dropItem.path} 
-                              className="dropdown-link"
-                              onClick={() => {
-                                setActiveNav('OUR WORKS');
-                                setShowWorksDropdown(false);
-                              }}
-                            >
-                              <span className="dropdown-icon">{dropItem.icon}</span>
-                              {dropItem.name}
+                        {worksDropdownItems.map((dropdownItem, index) => (
+                          <li key={index}>
+                            <Link to={dropdownItem.path} className="dropdown-link" onClick={closeMobileMenu}>
+                              <span className="dropdown-icon">{dropdownItem.icon}</span>
+                              {dropdownItem.name}
                             </Link>
                           </li>
                         ))}
                       </ul>
                     )}
-                  </div>
+                  </>
                 ) : (
-                  <Link 
-                    to={item.path} 
-                    className="nav-link"
-                    onClick={() => setActiveNav(item.name)}
-                  >
+                  <Link to={item.path} className="nav-link" onClick={closeMobileMenu}>
                     {item.name}
                   </Link>
                 )}
@@ -133,63 +120,46 @@ const Header = () => {
         </nav>
 
         {/* Mobile Hamburger */}
-        <button 
-          className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
-        >
+        <button className={`hamburger ${mobileMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu}>
           <span></span>
           <span></span>
           <span></span>
         </button>
-
-        {/* Mobile Navigation */}
-        <nav className={`nav-mobile ${mobileMenuOpen ? 'open' : ''}`}>
-          <ul className="mobile-nav-list">
-            {navItems.map((item) => (
-              <li key={item.name} className="mobile-nav-item">
-                {item.dropdown ? (
-                  <div className="mobile-dropdown">
-                    <span 
-                      className="mobile-nav-link dropdown-toggle" 
-                      onClick={handleWorksClick}
-                    >
-                      {item.name} ▼
-                    </span>
-                    {showWorksDropdown && (
-                      <ul className="mobile-dropdown-menu">
-                        {worksDropdownItems.map((dropItem) => (
-                          <li key={dropItem.path}>
-                            <Link 
-                              to={dropItem.path} 
-                              className="mobile-dropdown-link"
-                              onClick={closeMobileMenu}
-                            >
-                              <span className="dropdown-icon">{dropItem.icon}</span>
-                              {dropItem.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ) : (
-                  <Link 
-                    to={item.path} 
-                    className="mobile-nav-link"
-                    onClick={closeMobileMenu}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Mobile Overlay */}
-        {mobileMenuOpen && <div className="mobile-overlay" onClick={closeMobileMenu}></div>}
       </div>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && <div className="mobile-overlay" onClick={closeMobileMenu} />}
+      <nav className={`nav-mobile ${mobileMenuOpen ? 'open' : ''}`}>
+        <ul className="mobile-nav-list">
+          {navItems.map((item) => (
+            <li key={item.name} className="mobile-nav-item">
+              {item.dropdown ? (
+                <>
+                  <button className="mobile-nav-link" onClick={handleWorksClick}>
+                    {item.name}
+                  </button>
+                  {showWorksDropdown && (
+                    <ul className="mobile-dropdown-menu">
+                      {worksDropdownItems.map((dropdownItem, index) => (
+                        <li key={index}>
+                          <Link to={dropdownItem.path} className="mobile-dropdown-link" onClick={closeMobileMenu}>
+                            <span className="dropdown-icon">{dropdownItem.icon}</span>
+                            {dropdownItem.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <Link to={item.path} className="mobile-nav-link" onClick={closeMobileMenu}>
+                  {item.name}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 };

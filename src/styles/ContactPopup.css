@@ -1,0 +1,177 @@
+/* Contact Popup Styles */
+.contact-popup-trigger {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: #4169E1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(65, 105, 225, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contact-popup-trigger:hover {
+  box-shadow: 0 6px 25px rgba(65, 105, 225, 0.4);
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* Contact Options */
+.contact-options {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 999;
+}
+
+.contact-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  font-weight: 600;
+}
+
+.contact-option:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contact-option.whatsapp {
+  border-left: 4px solid #25D366;
+}
+
+.contact-option.whatsapp:hover {
+  background: #f0fff4;
+  color: #25D366;
+}
+
+.contact-option.phone {
+  border-left: 4px solid #4169E1;
+}
+
+.contact-option.phone:hover {
+  background: #f0f4ff;
+  color: #4169E1;
+}
+
+.option-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.option-text {
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Overlay */
+.contact-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 998;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .contact-popup-trigger {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .contact-icon {
+    font-size: 1.2rem;
+  }
+
+  .contact-options {
+    bottom: 5rem;
+    right: 1.5rem;
+  }
+
+  .contact-option {
+    padding: 0.8rem 1.2rem;
+    min-width: 130px;
+  }
+
+  .option-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-popup-trigger {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .contact-options {
+    bottom: 4.5rem;
+    right: 1rem;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 20px rgba(65, 105, 225, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(65, 105, 225, 0.6);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(65, 105, 225, 0.3);
+  }
+}
+
+.contact-popup-trigger {
+  animation: pulse 3s infinite;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .contact-popup-trigger {
+    background: #000;
+    border: 2px solid #fff;
+  }
+
+  .contact-option {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .contact-popup-trigger {
+    animation: none;
+  }
+
+  .contact-popup-trigger,
+  .contact-option {
+    transition: none;
+  }
+}

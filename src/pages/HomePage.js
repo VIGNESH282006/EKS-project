@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
+import WhyChooseUsSection from '../components/WhyChooseUsSection';
 import ContactSection from '../components/ContactSection';
 import ContactForm from '../components/ContactForm';
 
@@ -14,6 +15,8 @@ const HomePage = () => {
     >
       <HeroSection />
       <AboutSection />
+      {/* Added WhyChooseUsSection below AboutSection */}
+      <WhyChooseUsSection />
       <ContactSection />
       <ContactForm />
     </motion.div>

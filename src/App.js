@@ -9,15 +9,13 @@ import ContactPage from './pages/ContactPage';
 import PackagesPage from './pages/PackagesPage';
 import TeamPage from './pages/TeamPage';
 import CareersPage from './pages/CareersPage';
-import InteriorPage from './pages/InteriorPage';  // New import
+import InteriorPage from './pages/InteriorPage';
 import CompletedProjectsPage from './pages/CompletedProjectsPage';
 import OngoingProjectsPage from './pages/OngoingProjectsPage';
 import UpcomingProjectsPage from './pages/UpcomingProjectsPage';
-import ScrollToTop from './components/ScrollToTop';
 import AutoScrollToTop from './components/AutoScrollToTop';
+import ContactPopup from './components/ContactPopup'; // New contact popup
 import './styles/globals.css';
-import WhyChooseUsPage from './pages/WhyChooseUsPage';
-
 
 function App() {
   return (
@@ -25,22 +23,24 @@ function App() {
       <div className="App">
         <AutoScrollToTop />
         <Header />
-        <ScrollToTop />
+        {/* REMOVED ScrollToTop component */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/packages" element={<PackagesPage />} />
-          <Route path="/interior" element={<InteriorPage />} />  {/* New route */}
+          <Route path="/interior" element={<InteriorPage />} />
           <Route path="/our-team" element={<TeamPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/completed-projects" element={<CompletedProjectsPage />} />
           <Route path="/ongoing-projects" element={<OngoingProjectsPage />} />
           <Route path="/upcoming-projects" element={<UpcomingProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
+          {/* REMOVED WhyChooseUsPage route */}
         </Routes>
         <Footer />
+        {/* Added Contact Popup */}
+        <ContactPopup />
       </div>
     </Router>
   );
